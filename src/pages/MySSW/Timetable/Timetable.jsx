@@ -9,8 +9,6 @@ import {
 import {
   TimetableBody,
   TimetableBox,
-  TimetableChangeCourseBtn,
-  TimetableChangeCourseBtnText,
   TimetableDaysCell,
   TimetableDaysItem,
   TimetableHead,
@@ -24,38 +22,35 @@ import {
 } from './Timetable.styled';
 
 export const Timetable = ({ user, timetable }) => {
+  //eslint-disable-next-line
   const [isAnimated, setIsAnimated] = useState(false);
-  const [marathonId, setMarathonId] = useState(
-    user.group === '2' ? '72421-2' : '72421'
-  );
+  //eslint-disable-next-line
+  const [marathonId, setMarathonId] = useState('92196');
+  //eslint-disable-next-line
   const [personalTimetable, setPersonalTimetable] = useState(
     timetable.find(timeline => marathonId === timeline.marathon)
   );
 
-  const changeTimetable = () => {
-    setIsAnimated(true);
-    setMarathonId(marathonId => (marathonId === '72421' ? '79231' : '72421'));
-    setPersonalTimetable(
-      personalTimetable =>
-        (personalTimetable = timetable.find(timeline =>
-          marathonId === '72421'
-            ? '79231' === timeline.marathon
-            : '72421' === timeline.marathon
-        ))
-    );
-    setTimeout(() => {
-      setIsAnimated(false);
-    }, 3000);
-  };
+  // const changeTimetable = () => {
+  //   setIsAnimated(true);
+  //   setMarathonId(marathonId => (marathonId === '92196' ? '79231' : '92196'));
+  //   setPersonalTimetable(
+  //     personalTimetable =>
+  //       (personalTimetable = timetable.find(timeline =>
+  //         marathonId === '92196'
+  //           ? '79231' === timeline.marathon
+  //           : '92196' === timeline.marathon
+  //       ))
+  //   );
+  //   setTimeout(() => {
+  //     setIsAnimated(false);
+  //   }, 3000);
+  // };
 
   const getLink = () => {
-    const baseStreamUrl = 'https://pedagogium.ap.education/lesson/';
+    const baseStreamUrl = 'https://ssw.ap.education/lesson/';
 
-    return marathonId.includes('72421') && user.group === '2'
-      ? baseStreamUrl + 'logistics_2'
-      : marathonId.includes('72421')
-      ? baseStreamUrl + 'logistics'
-      : baseStreamUrl + 'prep';
+    return marathonId.includes('92196') && baseStreamUrl + 'online';
   };
 
   const link = getLink();
@@ -67,13 +62,13 @@ export const Timetable = ({ user, timetable }) => {
       <TimetableHeading>
         <CalendarIcon />
         Class schedule
-        {user.group !== '2' && (
+        {/* {user.group !== '2' && (
           <TimetableChangeCourseBtn onClick={changeTimetable}>
             <TimetableChangeCourseBtnText>
               Change course
             </TimetableChangeCourseBtnText>
           </TimetableChangeCourseBtn>
-        )}
+        )} */}
       </TimetableHeading>
       {!personalTimetable ? (
         <PointsPlaceHolder>
@@ -92,9 +87,10 @@ export const Timetable = ({ user, timetable }) => {
               <TimetableLessonType
                 className={isAnimated ? 'animated' : undefined}
               >
-                {marathonId.includes('72421')
+                {/* {marathonId.includes('92196')
                   ? 'Logistics'
-                  : 'Preparation Course'}
+                  : 'Preparation Course'} */}
+                Online Course
               </TimetableLessonType>
               <TimetableLessonLink href={link} target="_blank">
                 <TimetableLessonLinkText>Go to lesson</TimetableLessonLinkText>
@@ -124,7 +120,7 @@ export const Timetable = ({ user, timetable }) => {
                       key={i}
                       style={
                         lesson.day === new Date().getDay()
-                          ? { backgroundColor: '#0088f780' }
+                          ? { backgroundColor: '#337ab780' }
                           : {}
                       }
                     >

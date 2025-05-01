@@ -49,14 +49,10 @@ const Stream = () => {
     .split('|')[1]
     ?.trim()
     .trimEnd()
-    .toLowerCase()}_${location.replace('/lesson/', '')}`;
-
-  console.log(room);
+    .toLowerCase()}`;
 
   useEffect(() => {
-    document.title = `Lesson Online | Pedagogium | ${location
-      .replace('/lesson/', '')[0]
-      .toUpperCase()}${location.replace('/lesson/', '').slice(1)}`;
+    document.title = `Lesson Online | SSW`;
 
     socketRef.current = io('https://ap-chat-server.onrender.com/');
 

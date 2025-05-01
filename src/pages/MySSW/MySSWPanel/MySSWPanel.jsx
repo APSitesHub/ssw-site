@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react';
+import { Attendance } from '../Attendance/Attendance';
+import { Info } from '../Info/Info';
 import { Timetable } from '../Timetable/Timetable';
 import {
-  AdminBtnIcon,
   APPanel,
   APPanelBtn,
   CalendarBtnIcon,
-  InfoBtnIcon,
   PanelBackdrop,
   PanelHideLeftSwitch,
   PanelHideRightSwitch,
   PanelHideSwitch,
   TimetableBtnIcon,
-} from './MyPedagogiumPanel.styled';
-import { Info } from '../Info/Info';
-import { Attendance } from '../Attendance/Attendance';
+} from './MySSWPanel.styled';
 
-export const MyPedagogiumPanel = ({
+export const MySSWPanel = ({
   user,
   language,
   timetable,
@@ -52,18 +50,18 @@ export const MyPedagogiumPanel = ({
     setIsTimetableShown(isTimetableShown => !isTimetableShown);
   };
 
-  const toggleInfo = () => {
-    !isBackdropShown &&
-      (!isCalendarShown || !isTimetableShown) &&
-      setIsBackdropShown(isBackdropShown => (isBackdropShown = true));
-    isBackdropShown &&
-      !isCalendarShown &&
-      !isTimetableShown &&
-      setIsBackdropShown(isBackdropShown => (isBackdropShown = false));
-    setIsTimetableShown(false);
-    setIsCalendarShown(false);
-    setIsInfoShown(isInfoShown => !isInfoShown);
-  };
+  // const toggleInfo = () => {
+  //   !isBackdropShown &&
+  //     (!isCalendarShown || !isTimetableShown) &&
+  //     setIsBackdropShown(isBackdropShown => (isBackdropShown = true));
+  //   isBackdropShown &&
+  //     !isCalendarShown &&
+  //     !isTimetableShown &&
+  //     setIsBackdropShown(isBackdropShown => (isBackdropShown = false));
+  //   setIsTimetableShown(false);
+  //   setIsCalendarShown(false);
+  //   setIsInfoShown(isInfoShown => !isInfoShown);
+  // };
 
   const toggleCalendar = () => {
     !isBackdropShown &&
@@ -105,9 +103,9 @@ export const MyPedagogiumPanel = ({
       <APPanel className={isButtonBoxShown ? '' : 'hidden'}>
         {user.package !== 'online' && (
           <>
-            <APPanelBtn onClick={toggleInfo}>
+            {/* <APPanelBtn onClick={toggleInfo}>
               <InfoBtnIcon className={isInfoShown && 'active'} id="info-btn" />
-            </APPanelBtn>
+            </APPanelBtn> */}
             <APPanelBtn onClick={toggleTimetable}>
               <TimetableBtnIcon
                 className={isTimetableShown && 'active'}
@@ -122,18 +120,18 @@ export const MyPedagogiumPanel = ({
                 />
               </APPanelBtn>
             )}
-            {(user.mail === 'dev@mail.com' ||
-              user.mail === 'teacher2535@pedagogium.pl') && (
+            {/* {(user.mail === 'dev@mail.com' ||
+              user.mail === 'teacher2535@ssw.pl') && (
               <APPanelBtn
                 onClick={() =>
                   window.open(
-                    'https://academy.ap.education/streams/pedagogium-admin-panel'
+                    'https://academy.ap.education/streams/ssw-admin-panel'
                   )
                 }
               >
                 <AdminBtnIcon id="admin-btn" />
               </APPanelBtn>
-            )}
+            )} */}
           </>
         )}
       </APPanel>

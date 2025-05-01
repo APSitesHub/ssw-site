@@ -465,7 +465,7 @@ export const APPanelMarathonBtn = styled.button`
   background: linear-gradient(
     322deg,
     var(--main-color) -5.61%,
-    var(--secondary-color) 93.88%
+    var(--accent-color) 93.88%
   );
   border: none;
 
@@ -497,9 +497,9 @@ export const APPanelMarathonBtn = styled.button`
     background: linear-gradient(
         322deg,
         var(--main-color) -5.61%,
-        var(--secondary-color) 93.88%
+        var(--accent-color) 93.88%
       ),
-      var(--secondary-color);
+      var(--accent-color);
   }
 
   &:hover,

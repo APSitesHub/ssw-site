@@ -186,7 +186,7 @@ export const LeaderPlace = styled.div`
   background: linear-gradient(
     322deg,
     var(--main-color) -5.61%,
-    var(--secondary-color) 93.88%
+    var(--accent-color) 93.88%
   );
 `;
 

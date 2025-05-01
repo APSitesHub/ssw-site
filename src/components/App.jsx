@@ -14,10 +14,8 @@ const Stream = lazy(() =>
   import(/* webpackChunkName: "Stream page" */ '../pages/Streams/Stream/Stream')
 );
 
-const MyPedagogium = lazy(() =>
-  import(
-    /* webpackChunkName: "My Pedagogium Page" */ '../pages/MyPedagogium/MyPedagogium'
-  )
+const MySSW = lazy(() =>
+  import(/* webpackChunkName: "My SSW Page" */ '../pages/MySSW/MySSW')
 );
 
 const UniUserAdminPanel = lazy(() =>
@@ -40,45 +38,26 @@ export const App = () => {
       />
       <Suspense fallback={Loader} noindex={true}>
         <Routes noindex={true}>
-          <Route
-            index
-            path="/"
-            element={<MyPedagogium />}
-            noindex={true}
-          ></Route>
+          <Route index path="/" element={<MySSW />} noindex={true}></Route>
           <Route
             path="admin"
-            element={<UniUserAdminPanel uni={'PEDAGOGIUM'} lang={'pl'} />}
+            element={<UniUserAdminPanel uni={'SSW'} lang={'pl'} />}
             noindex={true}
           />
           <Route path="*" element={<NotFound />} noindex={true} />
 
           <Route path="lesson" element={<Streams />} noindex={true}>
             {/* <Route
-              path="logistics"
+              path="online"
               element={<StreamToZoomRedirecter />}
               noindex={true}
             /> */}
-            <Route path="logistics" element={<Stream />} noindex={true} />
+            <Route path="online" element={<Stream />} noindex={true} />
             <Route
-              path="logistics-chat"
+              path="online-chat"
               element={<WindowedChat />}
               noindex={true}
             />
-            <Route path="logistics_2" element={<Stream />} noindex={true} />
-            {/* <Route
-              path="logistics_2"
-              element={<StreamToZoomRedirecter />}
-              noindex={true}
-            /> */}
-            <Route
-              path="logistics_2-chat"
-              element={<WindowedChat />}
-              noindex={true}
-            />
-            {/* <Route path="prep" element={<StreamToZoomRedirecter />} noindex={true} /> */}
-            <Route path="prep" element={<Stream />} noindex={true} />
-            <Route path="prep-chat" element={<WindowedChat />} noindex={true} />
           </Route>
         </Routes>
       </Suspense>
